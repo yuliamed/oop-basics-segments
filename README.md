@@ -11,15 +11,22 @@ Implement `Segment` methods:
 
 * `double length()`\
     Return length of the segment.
+
+* `Point middle()`\
+    Return a middle point of the segment.
     
 * `Point intersection(Segment another)`\
-    Return a point of intersection of the current segment and the given one.\
-    Return `null` if there is no such point.  
+    Return a point of intersection (common point) of the current segment and the given one.\
+    Return `null` if there is no such point.\
+    Note: if collinear segments shares a single point, return it. 
+    If they share a whole non-point subsegment, return `null`.
+    
 
 You may use `main` method of `Segment` class to tryout your code.
 
 Hints:
 * [Length reference](https://www.wikihow.com/Use-Distance-Formula-to-Find-the-Length-of-a-Line)
+* [Midpoint reference](https://www.wikihow.com/Find-the-Midpoint-of-a-Line-Segment#Use-the-Midpoint-Formula)
 * [Intersection reference](https://en.wikipedia.org/wiki/Line–line_intersection)
  
 ## Examples
@@ -45,6 +52,24 @@ Point intersection = first.intersection(second);
 
 System.out.println(intersection.getX());
 System.out.println(intersection.getY());
+
+```
+
+Output:
+
+```
+1
+1
+```
+---
+Sample code:
+```java
+...
+Segment seqment = new Segment(new Point(2, 0), new Point(0, 2));
+Point midpoint = segment.middle();
+
+System.out.println(midpoint.getX());
+System.out.println(midpoint.getY());
 
 ```
 
@@ -108,12 +133,12 @@ class Segment {
         //TODO
     }
 
-    Point intersection(Segment another){
+    Point middle(){
         //TODO
     }
 
-    public static void main(String[] args) {
-        
+    Point intersection(Segment another){
+        //TODO
     }
 
 }

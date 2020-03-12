@@ -10,6 +10,10 @@ public class Segment {
         //TODO
     }
 
+    Point middle() {
+        //TODO
+    }
+
     Point intersection(Segment another) {
         //TODO
     }

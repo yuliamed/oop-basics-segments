@@ -16,28 +16,28 @@ public class SegmentTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void testConstructorSamePointIssue() {
+    public void testConstructorSameStartEndCase() {
         Point p = new Point(3, 7);
         new Segment(p, p);
     }
 
     @Test(expected = RuntimeException.class)
-    public void testConstructorEqualPointsIssue() {
+    public void testConstructorEqualStartEndCase() {
         new Segment(new Point(3, 7), new Point(3, 7));
     }
 
     @Test(expected = RuntimeException.class)
-    public void testConstructorNullPointIssue1() {
+    public void testConstructorNullStartCase() {
         new Segment(null, new Point(3, 7));
     }
 
     @Test(expected = RuntimeException.class)
-    public void testConstructorNullPointIssue2() {
+    public void testConstructorNullEndCase() {
         new Segment(new Point(3, 7), null);
     }
 
     @Test(expected = RuntimeException.class)
-    public void testConstructorNullPointIssue12() {
+    public void testConstructorNullStartEndCase() {
         new Segment(null, null);
     }
 
@@ -168,25 +168,42 @@ public class SegmentTest {
         }
     }
 
+    @Test
+    public void testMiddle() {
+        testMiddle(new Point(0.5, 0.5), new Segment(new Point(0, 0), new Point(1, 1)));
+        testMiddle(new Point(-1.5, -1.5), new Segment(new Point(-1, -1), new Point(-2, 2)));
+        testMiddle(new Point(4.5, 1.5), new Segment(new Point(0, 3), new Point(9, 0)));
+        testMiddle(new Point(1, 1), new Segment(new Point(0, 2), new Point(2, 0)));
+        testMiddle(new Point(2, 1.5), new Segment(new Point(0, 3), new Point(4, 0)));
+        testMiddle(new Point(0, -1), new Segment(new Point(-1, -3), new Point(1, 1)));
+        testMiddle(new Point(0, 2), new Segment(new Point(0, 1), new Point(0, 3)));
+    }
+
+    private void testMiddle(final Point expected, final Segment segment) {
+        final Point actual = segment.middle();
+        assertEquals(expected.getX(), actual.getX(), 0.001);
+        assertEquals(expected.getY(), actual.getY(), 0.001);
+    }
+
     private void testIntersection(final Point expected, final Segment a, final Segment b) {
         final Point actual = a.intersection(b);
         assertEquals(expected.getX(), actual.getX(), 0.001);
         assertEquals(expected.getY(), actual.getY(), 0.001);
     }
 
-    private static void testLength(final Point start, final Point end, final double expected) {
+    private void testLength(final Point start, final Point end, final double expected) {
         double length = new Segment(start, end).length();
         assertEquals("Error on " + segmentCaseToString(start, end), expected, length, 0.001);
     }
 
-    private static String segmentCaseToString(Point start, Point end) {
+    private String segmentCaseToString(Point start, Point end) {
         return new StringJoiner("->", "[", "]")
                 .add(pointToString(start))
                 .add(pointToString(end))
                 .toString();
     }
 
-    private static String pointToString(final Point point) {
+    private String pointToString(final Point point) {
         if (point == null) {
             return null;
         }
