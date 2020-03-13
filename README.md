@@ -20,9 +20,6 @@ Implement `Segment` methods:
     Return `null` if there is no such point.\
     Note: if collinear segments shares a single point, return it. 
     If they share a whole non-point subsegment, return `null`.
-    
-
-You may use `main` method of `Segment` class to tryout your code.
 
 Hints:
 * [Length reference](https://www.wikihow.com/Use-Distance-Formula-to-Find-the-Length-of-a-Line)
