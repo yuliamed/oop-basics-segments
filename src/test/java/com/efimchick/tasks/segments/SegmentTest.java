@@ -171,7 +171,7 @@ public class SegmentTest {
     @Test
     public void testMiddle() {
         testMiddle(new Point(0.5, 0.5), new Segment(new Point(0, 0), new Point(1, 1)));
-        testMiddle(new Point(-1.5, -1.5), new Segment(new Point(-1, -1), new Point(-2, 2)));
+        testMiddle(new Point(-1.5, 0.5), new Segment(new Point(-1, -1), new Point(-2, 2)));
         testMiddle(new Point(4.5, 1.5), new Segment(new Point(0, 3), new Point(9, 0)));
         testMiddle(new Point(1, 1), new Segment(new Point(0, 2), new Point(2, 0)));
         testMiddle(new Point(2, 1.5), new Segment(new Point(0, 3), new Point(4, 0)));
